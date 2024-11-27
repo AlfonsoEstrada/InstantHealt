@@ -6,8 +6,10 @@ import {
   FlatList,
   Image,
   StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { useNavigation } from '@react-navigation/native';
 
 const uri = require("../assets/images/manosconpastillas.jpg");
 const firstaid = require("../assets/images/firstaid.jpg");
@@ -32,7 +34,7 @@ const courses = [{
   img: uri
 }];
 
-export function Courses() {
+export const Courses: React.FC<{ navigation: any }> = ({ navigation }) =>  {
   const [searchText, setSearchText] = useState('');
   const [filteredCourses, setFilteredCourses] = useState(courses);
 
@@ -67,14 +69,17 @@ export function Courses() {
 
       <FlatList
         data={filteredCourses}
-        keyExtractor={( index) => index.toString()}
+        keyExtractor={(item, index) => index.toString()}
         numColumns={2}
         columnWrapperStyle={styles.row}
         renderItem={({ item }) => (
-          <View style={styles.courseCard}>
+          <TouchableOpacity
+            style={styles.courseCard}
+            onPress={() => navigation.navigate('CourseList', { title: item.title })}
+          >
             <Image source={item.img} style={styles.courseImage} />
             <Text style={styles.courseTitle}>{item.title}</Text>
-          </View>
+          </TouchableOpacity>
         )}
         contentContainerStyle={styles.courseList}
       />

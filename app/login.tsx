@@ -41,6 +41,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
       });
   };
 
+  
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
