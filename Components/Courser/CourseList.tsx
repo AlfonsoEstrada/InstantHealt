@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import YoutubePlayer from "react-native-youtube-iframe";
+import Icon from "react-native-vector-icons/FontAwesome";
+
 import {
   View,
   StyleSheet,
@@ -10,6 +12,7 @@ import {
   Text,
 } from "react-native";
 import MiniCard from "./MiniCard";
+import { Button } from "react-native-elements";
 import { useRoute, RouteProp } from "@react-navigation/native";
 import * as Progress from "react-native-progress";
 
@@ -81,8 +84,15 @@ const CourseListComponent: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerGradient}>
-
+      <View style={[styles.headerGradient]}>
+        <View>
+        <Button
+          title=""
+          icon={<Icon name="arrow-left" size={20} color="white"  />}
+          buttonStyle={{backgroundColor: "transparent",}}
+        onPress={() => navigation.goBack()}
+        />
+        </View>
         <Text style={styles.headerText}>{title}</Text>
         </View>
       <View style={styles.videoSection}>
@@ -143,19 +153,23 @@ export default CourseListComponent;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: "flex",
     backgroundColor: "#F9F9F9",
   },
   headerGradient: {
     paddingVertical: 20,
     paddingHorizontal: 20,
     alignItems: "center",
-    backgroundColor: "#BE1622"
+    flexDirection: "row",
+    backgroundColor: "#BE1622",
+    width: "100%",
   },
   headerText: {
     color: "white",
     fontSize: 26,
     fontWeight: "bold",
+    textAlign: "center",
+    flex: 1,
   },
   videoSection: {
     justifyContent: "center",
