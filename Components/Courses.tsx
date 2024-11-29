@@ -38,6 +38,11 @@ export const Courses: React.FC<{ navigation: any }> = ({ navigation }) =>  {
   const [searchText, setSearchText] = useState('');
   const [filteredCourses, setFilteredCourses] = useState(courses);
 
+
+
+
+
+  
   const searchFilterFunction = (text: string) => {
     setSearchText(text);
     const newData = courses.filter(item => {

@@ -6,8 +6,8 @@ import {
   FlatList,
   Alert,
   Dimensions,
-  ActivityIndicator,
   Text,
+  Button,
 } from "react-native";
 import MiniCard from "./MiniCard";
 import { useRoute, RouteProp } from "@react-navigation/native";
@@ -19,7 +19,7 @@ type RootStackParamList = {
 
 type CourseListRouteProp = RouteProp<RootStackParamList, "CourseList">;
 
-const CourseListComponent: React.FC = () => {
+const CourseListComponent: React.FC<{ navigation: any }> = ({ navigation }) =>  {
   const route = useRoute<CourseListRouteProp>();
   const { title } = route.params;
 
@@ -82,13 +82,16 @@ const CourseListComponent: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerGradient}>
-
+        <Button
+        title="Menu"
+        onPress={() => navigation.goBack()}
+        />
         <Text style={styles.headerText}>{title}</Text>
         </View>
       <View style={styles.videoSection}>
         {mainVideoId && (
           <View>
-            {loading && <ActivityIndicator size="large" color="#0000ff" />}
+            {loading}
             <YoutubePlayer
               webViewStyle={styles.video}
               height={Dimensions.get("window").width * 0.5625} // 16:9 aspect ratio
