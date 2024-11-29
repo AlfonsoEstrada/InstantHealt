@@ -39,7 +39,7 @@ const DrawerNavigation = () => {
         headerShown: false,
         drawerActiveTintColor: '#BE1622',
         drawerInactiveTintColor: '#333',
-        drawerLabelStyle: { marginLeft: -20, fontSize: 20 },
+        drawerLabelStyle: { marginLeft: 0, fontSize: 20 },
       }}
     >
       <Drawer.Screen
