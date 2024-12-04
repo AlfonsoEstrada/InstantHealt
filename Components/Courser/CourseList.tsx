@@ -8,7 +8,6 @@ import {
   FlatList,
   Alert,
   Dimensions,
-  ActivityIndicator,
   Text,
 } from "react-native";
 import MiniCard from "./MiniCard";
@@ -22,7 +21,7 @@ type RootStackParamList = {
 
 type CourseListRouteProp = RouteProp<RootStackParamList, "CourseList">;
 
-const CourseListComponent: React.FC = () => {
+const CourseListComponent: React.FC<{ navigation: any }> = ({ navigation }) =>  {
   const route = useRoute<CourseListRouteProp>();
   const { title } = route.params;
 
@@ -98,7 +97,7 @@ const CourseListComponent: React.FC = () => {
       <View style={styles.videoSection}>
         {mainVideoId && (
           <View>
-            {loading && <ActivityIndicator size="large" color="#0000ff" />}
+            {loading}
             <YoutubePlayer
               webViewStyle={styles.video}
               height={Dimensions.get("window").width * 0.5625} // 16:9 aspect ratio

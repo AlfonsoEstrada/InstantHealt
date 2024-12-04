@@ -10,7 +10,15 @@ const rcp = "../assets/images/rcp.jpg";
 const quemaduras = "../assets/images/quemaduras.jpg";
 
 
+
+
+
+
 const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
+
+  function CourseCard(CourseName: string) {
+    navigation.navigate("CourseList", { title: CourseName });
+  }
 
   return (
     <ScrollView style={{ backgroundColor: "#e4e4eb" }}>
@@ -64,7 +72,7 @@ const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
               caso de emergencia.
             </Text>
             <Button 
-
+            onPress={() => CourseCard("RCP")}
               icon={<Icon name="arrow-right" size={20} color="white"  />}
               buttonStyle={styles.button}
 
@@ -81,7 +89,7 @@ const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
               Como actuar en caso de quemaduras, la mejor forma de tratarlas y prevenirlas.
             </Text>
             <Button 
-
+            onPress={() => CourseCard("Quemaduras")}
               icon={<Icon name="arrow-right" size={20} color="white"  />}
               buttonStyle={styles.button}
 
@@ -98,7 +106,7 @@ const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
               Las heridas son comunes en el hogar, aprende a tratarlas de manera segura y eficaz.
             </Text>
             <Button 
-
+            onPress={() => CourseCard("Heridas y cortaduras")}
               icon={<Icon name="arrow-right" size={20} color="white"  />}
               buttonStyle={styles.button}
 
@@ -115,7 +123,7 @@ const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
               Aprende a armar un botiquin de primeros auxilios, y tenlo siempre a la mano.
             </Text>
             <Button 
-
+            onPress={() => CourseCard("Primeros Auxilios")}
               icon={<Icon name="arrow-right" size={20} color="white"  />}
               buttonStyle={styles.button}
 
