@@ -99,6 +99,25 @@ const CourseListComponent: React.FC = () => {
           </View>
         )}
       </View>
+      <View style={styles.progressSection}>
+        <Progress.Bar
+          progress={progressPercentage / 100}
+          width={Dimensions.get("window").width * 0.8}
+          color="#FF5A5F"
+          unfilledColor="#F1F1F1"
+          borderWidth={0}
+          height={12}
+          borderRadius={10}
+        />
+        <Text style={styles.progressText}>
+          Progreso: {progressPercentage}%
+        </Text>
+        {progressPercentage === 100 && (
+          <Text style={styles.completionMessage}>
+            ¡Felicidades! Has completado el curso.
+          </Text>
+        )}
+      </View>
       <View style={styles.listSection}>
         <Text style={styles.recommendationsTitle}>Episodios</Text>
         <FlatList
